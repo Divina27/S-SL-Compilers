@@ -1,0 +1,66 @@
+In stdIdentifiers, in the keyword section
+removed keywords until, do, packed, program, begin, while, repeat
+since these are no longer recognized as keywords in MiniT
+
+In stdIdentifiers, in the keyword section
+added keywords external, module, elsif, label, loop, exit, when
+since these are new keywords recognized in MiniT
+
+In stdIdentifiers, in the predefined identifiers section
+removed identifiers char, write, writeln, read, readln
+since these are no longer recognized as identifiers in MiniT
+
+In stdIdentifiers, in the predefined identifiers section
+added identifiers string, put, putln, get, getln
+these are new identifiers recognized in MiniT
+
+In scan.ssl, in the keyword section of the output tokens
+removed output tokens pUntil, pDo, pPacked, pProgram, pBegin, pWhile, pRepeat
+these are no longer recognized as keyword tokens in MiniT
+
+In scan.ssl, in the keyword section of the output tokens
+added output tokens pExternal, pModule, pElsif, pLabel, pLoop, pExit, pWhen
+these are new keyword tokens recognized in MiniT
+
+In scan.ssl, in the keyword section of output tokens
+change lastKeywordToken from pRepeat to pWhen
+pWhen is the new last keyword token after the changes made above
+
+In scan.ssl, in input character classes
+added lAtSign for '@', lQuestionMark for '?', lPercent for '%'
+these are new input character classes in MiniT
+
+In parser.pt, in the charClassMap section of Initialize procedure
+add:
+  charClassMap[ord('@')] := lAtSign;
+  charClassMap[ord('?')] := lQuestion;
+  charClassMap[ord('%')] := lPercent;
+'@','%', '?' are the new classes of characters in MiniT
+
+In parser.pt, in the misc. section,
+change from quote = ''''; to quote = '"';  
+Reuse the existing lQuote character class to refer to the MiniT double quote " instead of single quote '
+
+In scan.ssl, in the non-compund token of output tokens
+added pPlusEquals, pMinusEquals, pPlusPlus, pMinusMinus, pAtSign, pQuestionMark
+these are new syntax tokens in MiniT
+
+In scan.ssl, in the rule scan
+added recognition to new syntax token pPlusEquals, pMinusEquals, pPlusPlus, pMinusMinus, pAtSign, pQuestionMark
+update scanner to be able to emit the new syntax tokens in MiniT
+
+In scan.ssl, in the rule scan
+remove recognition of { and (* as recogition as comment and add recogition of % as comment
+since in MiniT, comment uses % to end of line instead of {} and (* *)
+
+In scan.ssl, in the rule comment
+change rule to end comment at end of line
+since in MiniT, comment uses % to end of line
+
+In scan.ssl, in the rule alternativecomment
+removed rule alternativecomment
+since there is only one way to comment in MiniT
+
+In scan.ssl, in the rule Scan
+change the question mark case to emit a question mark
+fix the syntax error when compiling
