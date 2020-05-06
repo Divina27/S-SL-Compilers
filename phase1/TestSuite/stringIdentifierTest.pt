@@ -1,0 +1,10 @@
+external output
+
+%test identifier string
+var testString : string
+
+%test outputing string type identifier, test += with string
+testString := "test string"
+put (testString) putln
+testString += " add equals test for string"
+put (testString) putln
