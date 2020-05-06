@@ -1,0 +1,111 @@
+Test1: 1DeclarationTest
+purpose:
+    test declarations const, type, and var in MiniT
+    test multi-declaration of var in MiniT
+    program is also tested for every testcase but I will outline the expected output here
+expected output token stream:
+    sConst for const declarations, sType for type declarations, sVar for var declarations
+    for the multi-declaration it should declare the next var then the type after, for example
+        var a,b,c : integer
+        will output:
+        sVar
+        sIdentifier
+        sVar
+        sIdentifier
+        sVar
+        sIdentifier
+        sIdentifier
+    for the expected program output, every program should start with sProgram, followed by sIdentifier for the external identifier, then sParmEnd
+
+Test2: 2ProcedureTest
+purpose:
+    test procedure, declaration within procedure, and statements within procedure
+    test public procedure
+expected output token stream:
+    output sProcedure to begin a procedure, followed by sIdentifier for procedure name
+    if public procedure it will output a sPublic after that
+    output sParmEnd to end the procedure setup
+    output appropriate declaration and statements token within the procedure to see that those still works
+    after end procedure it should continue running the program
+    
+Test3: 3ModuleTest
+purpose:
+    test module, declaration within module, and statements within module
+expected output token stream:
+    output sModule to begin a module, followed by sIdenetifier for module name
+    output appropriate declaration and statements token within the module to see that those still works
+    after end module it should continue running the program
+    
+Test4: 4ElsifTest
+purpose:
+    test if statement with elsif added in
+    we made elsif into a nested if statement here so there are no sElsif token outputed
+expected output token stream:
+    first if statement is surrounded by sBegin and sEnd, so it should begin with sBegin
+    a if statement start with sIfStmt, then evaluate the expression of the if statement accordingly
+    after end of expression, it output sThen followed by the statements within if condition
+    at elsif it will output a sElse followed by another if statement
+    the else should be moved into this inner if statement and evaluated there
+    all the if statements should be ended with a sEnd
+    this test should output something like this
+        sBegin
+            sIfStmt (if)
+            (Expression)
+            sThen
+            (Statements)
+            sElse (elsif)
+            sBegin
+                sIfStmt
+                (Expression)
+                sThen
+                (Statements)
+                sElse (else)
+                (Statements)
+            sEnd
+        sEnd
+  
+Test5: 5CaseTest
+purpose:
+    test case statement with default alternative in MiniT added in 
+expected output token stream:
+    case statement is also surrounded with sBegin and sEnd like if statement, so should begin with sBegin
+    case statement then start with sCaseStmt followed by sIdentifier of the case statement, ending with sExpnEnd
+    case statement start off with a casealternative which output sInteger of the case, followed by statement of the case
+    after the first statement it will check whether it is another casealternative or the new default case statement
+    if it is the new default case statement it will output sCaseOtherwise, followed by the statement of the otherwise case
+    after case statement end it will output sCaseEnd and sEnd (although we are not quite sure why we would need both)
+    
+Test6: 6LoopTest
+purpose:
+    test loop statement of MiniT which replaces while and repeat in Pascal
+expected output token stream:
+    loop statement is also surrounded with sBegin and sEnd like if statement and case statement, so should begin with sBegin
+    loop statement start with sLoopStmt followed by the statement of the loop
+    exit when within the loop output sLoopExitWhen, followed by the expression of the exit condition, then the statement at loop exit
+    the loop statement end with sEnd
+
+Test7: 7ShortFormTest
+purpose:
+    test '+=' and '-=' that was added to MiniT
+expected output token stream:
+    we added these shortform into the assignment statement part of assignmentorcall rule, so it will start by outputting sAssignmentStmt
+    next it output sIdentifier twice to simulate the identifier assigning to itself
+    next is the expression that is added to or subtracted from the identifier, expression is used here to allow to use shortform with declared variable as well
+    next it output sAdd for '+=' and sSubtract for '-=', note that the output tokens are in postfix form
+    it end with sExpnEnd
+    
+Test8: 8IteratorTest
+purpose:
+    test '++' and '--' that was added to MiniT
+expected output token stream:
+    similar to the shortform, iterator are also added to assignment statement so it begin with sAssignmentStmt
+    next it output sIdentifier twice
+    next it output sIncrement for '++' and sDecrement for '--'
+    it ends with sExpnEnd
+    
+Test9: 9StringTest
+purpose:
+    test the new string operator in MiniT substring and length
+expected output token stream:
+    for substring, it should output sLiteral first (the string it is taking the substring from), followed by two sInteger (the range of the substring), it ends by outputting sSubstring
+    for length, it should output sLiteral first, then sLength
