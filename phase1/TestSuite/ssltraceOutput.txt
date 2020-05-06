@@ -1,0 +1,417 @@
+inputTest output:
+
+  .pIdentifier (screened to pExternal)
+  .pIdentifier
+  % Output token text 'input'
+ .pComma
+  .pIdentifier
+  % Output token text 'output'
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+  % Output token text 'testinput'
+ .pColon
+  .pIdentifier
+  % Output token text 'integer'
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+  % Output token text 'testinputline'
+ .pColon
+  .pIdentifier
+  % Output token text 'string'
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+  % Output token text 'get'
+ .pLeftParen
+  .pIdentifier
+  % Output token text 'testinput'
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pIdentifier
+  % Output token text 'testinput'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+  % Output token text 'getln'
+ .pLeftParen
+  .pIdentifier
+  % Output token text 'testinputline'
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pIdentifier
+  % Output token text 'testinputline'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+ .pEndFile
+
+-----------------------------------------------------------------------
+
+loopTest output
+
+  .pIdentifier (screened to pExternal)
+  .pIdentifier
+  % Output token text 'output'
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+  % Output token text 'x'
+ .pColon
+  .pIdentifier
+  % Output token text 'integer'
+ .pNewLine
+  .pIdentifier
+  % Output token text 'x'
+ .pColonEquals
+  .pInteger
+  % Output token text '1'
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pLoop)
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+  % Output token text 'x'
+ .pEquals
+  .pInteger
+  % Output token text '1'
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pLiteral
+  % Output token text 'if condition reached, x = 1'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+  .pIdentifier (screened to pElsif)
+  .pIdentifier
+  % Output token text 'x'
+ .pEquals
+  .pInteger
+  % Output token text '2'
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pLiteral
+  % Output token text 'elsif condition reached, x = 2'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pLiteral
+  % Output token text 'else condition reached, x = 3'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+  .pIdentifier (screened to pIf)
+ .pNewLine
+  .pIdentifier (screened to pExit)
+  .pIdentifier (screened to pWhen)
+  .pIdentifier
+  % Output token text 'x'
+ .pGreaterEqual
+  .pInteger
+  % Output token text '3'
+ .pNewLine
+  .pIdentifier
+  % Output token text 'x'
+ .pPlusPlus
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+  .pIdentifier (screened to pLoop)
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pLoop)
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+  % Output token text 'x'
+ .pEquals
+  .pInteger
+  % Output token text '3'
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pLiteral
+  % Output token text 'if condition of minus minus, x = 3'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+  .pIdentifier (screened to pElsif)
+  .pIdentifier
+  % Output token text 'x'
+ .pEquals
+  .pInteger
+  % Output token text '2'
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pLiteral
+  % Output token text 'elsif, x = 2'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pLiteral
+  % Output token text 'else, x = 1'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+  .pIdentifier (screened to pIf)
+ .pNewLine
+  .pIdentifier (screened to pExit)
+  .pIdentifier (screened to pWhen)
+  .pIdentifier
+  % Output token text 'x'
+ .pLessEqual
+  .pInteger
+  % Output token text '1'
+ .pNewLine
+  .pIdentifier
+  % Output token text 'x'
+ .pMinusMinus
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+  .pIdentifier (screened to pLoop)
+ .pNewLine
+ .pEndFile
+
+-----------------------------------------------------------------------
+
+minusequalsTest output
+
+  .pIdentifier (screened to pExternal)
+  .pIdentifier
+  % Output token text 'output'
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+  % Output token text 'x'
+ .pColon
+  .pIdentifier
+  % Output token text 'integer'
+ .pNewLine
+  .pIdentifier
+  % Output token text 'x'
+ .pColonEquals
+  .pInteger
+  % Output token text '0'
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+  % Output token text 'x'
+ .pMinusEquals
+  .pInteger
+  % Output token text '7'
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+  % Output token text 'x'
+ .pEquals
+ .pMinus
+  .pInteger
+  % Output token text '7'
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pLiteral
+  % Output token text '-= works'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+  .pIdentifier (screened to pIf)
+ .pNewLine
+ .pEndFile
+
+-----------------------------------------------------------------------
+
+moduleAndPlusEqualsTest output
+
+  .pIdentifier (screened to pExternal)
+  .pIdentifier
+  % Output token text 'output'
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+  % Output token text 'x'
+ .pColon
+  .pIdentifier
+  % Output token text 'integer'
+ .pNewLine
+  .pIdentifier
+  % Output token text 'x'
+ .pColonEquals
+  .pInteger
+  % Output token text '1'
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pModule)
+  .pIdentifier
+  % Output token text 'plusequals'
+ .pNewLine
+  .pIdentifier (screened to pLoop)
+ .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pIdentifier
+  % Output token text 'x'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+  .pIdentifier
+  % Output token text 'x'
+ .pPlusEquals
+  .pInteger
+  % Output token text '5'
+ .pNewLine
+  .pIdentifier
+  % Output token text 'x'
+ .pColonEquals
+  .pIdentifier
+  % Output token text 'x'
+  .pIdentifier (screened to pMod)
+  .pInteger
+  % Output token text '7'
+ .pNewLine
+  .pIdentifier (screened to pExit)
+  .pIdentifier (screened to pWhen)
+  .pIdentifier
+  % Output token text 'x'
+ .pEquals
+  .pInteger
+  % Output token text '0'
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+  .pIdentifier (screened to pLoop)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+  .pIdentifier (screened to pModule)
+ .pNewLine
+ .pEndFile
+
+-----------------------------------------------------------------------
+
+oldAndNewStringTest output
+
+  .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pExternal)
+  .pIdentifier
+  % Output token text 'output'
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+ #eIllegalChar
+  .pIdentifier
+  % Output token text 'test'
+  .pIdentifier
+  % Output token text 'old'
+  .pIdentifier
+  % Output token text 'string'
+ #eIllegalChar
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+  .pNewLine
+  .pNewLine
+  .pIdentifier
+  % Output token text 'put'
+ .pLeftParen
+  .pLiteral
+  % Output token text 'test new string'
+ .pRightParen
+  .pIdentifier
+  % Output token text 'putln'
+ .pNewLine
+ .pEndFile
+
+-----------------------------------------------------------------------
+
+otherTest output
+
+  .pNewLine
+ .pAtSign
+ .pQuestionMark
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+  % Output token text 'until'
+  .pIdentifier
+  % Output token text 'do'
+  .pIdentifier
+  % Output token text 'packed'
+  .pIdentifier
+  % Output token text 'program'
+  .pIdentifier
+  % Output token text 'begin'
+  .pIdentifier
+  % Output token text 'while'
+  .pIdentifier
+  % Output token text 'repeat'
+ #eIllegalChar
+ #eIllegalChar
+ .pLeftParen
+ .pStar
+ .pStar
+ .pRightParen
+ .pNewLine
+ .pEndFile
