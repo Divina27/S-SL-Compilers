@@ -1,0 +1,14 @@
+external output
+
+var x : integer
+x := 1
+
+%test module and test += with integer
+module plusEquals
+    loop
+        put (x) putln
+        x += 5
+        x := x mod 7
+        exit when x = 0
+    end loop
+end module
