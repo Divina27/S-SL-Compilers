@@ -1,0 +1,150 @@
+Coder.ssl:
+1
+In coder.ssl, in input token section
+change it to match the semantic.ssl output T-code token
+they must match for the code to work
+
+2
+In coder.ssl, in trap section
+add new string operation traps
+these new traps are needed to handle string in runtime
+
+In coder.ssl, in trap section
+ensure the number matches correctly
+trap numbering need to be correct for it to work
+
+3
+In coder.ssl, in type Integer section
+add string to DataKind
+need a new string data kind to handle string added to MiniT
+
+4
+In coder.ssl, in mechanism OperandStack
+remove oOperandPushChar
+char is no longer in MiniT
+
+In coder.ssl, in mechanism OperandStack
+rename oOperandPushStringDescriptor to oOperandPushString
+for clarity purposes
+
+5
+In coder.ssl, in Block rule
+modify block to accept statement in declaraction loop
+since module declaration can contain statement while still being in declaration of the program
+
+6
+In coder.ssl
+remove all handling of tLiteralChar and tStoreParmChar
+char is no longer used in MiniT
+
+In coder.ssl
+add tLiteralString and tStoreParmString in place of tLiteralChar and tStoreParmChar
+string replaces char in MiniT
+
+In coder.ssl
+remove all handling of tStringDescriptor and tSkipString
+these are replaced with tLiteralString in MiniT
+
+In coder.ssl
+remove handling of tAssignChar and tSubscriptChar
+char is no longer used in MiniT
+
+7
+In coder.ssl, in OperandPushExpression and OperandPushExpressionAssignPopPop rule
+add handling of several string operation base on what each rule needs
+the new MiniT string need to be handled
+
+8
+In coder.ssl, in Routine rule
+add handling of string in Routine rule
+string assign is handled differently in MiniT
+
+9
+In coder.ssl
+implement OperandSubscriptStringPop with appropriate size scaling
+add subscript handling to the new MiniT string
+
+In coder.ssl
+add ten under type integer to scale by string size (shifting left by 10)
+operand length is also set to string size instead of byte 
+this is all to do with scaling the size to MiniT string size of 1024
+
+In coder.ssl
+implement rules like OperandSubscriptNonManifestStringPop (string version of OperandSubscriptNonManifestIntegerPop)
+string equaivalent rule needed to handle subscripting
+
+10
+In coder.ssl
+add new rules for string operation, modify OperandChr and OperandOrd
+rules to implement the new string added to MiniT
+
+11
+In coder.ssl
+add new trap rules to handle the passing string traps within the new string rule
+one for sending string to string trap and the other to get string result from string trap
+handling of string trap is consistent for all string rules
+
+12
+In coder.ssl, in OperandForceIntoTemp rule
+add handling for mString to call OperandForceAddressIntoTemp
+since MiniT string are always represented by their address
+
+In coder.ssl, in OperandForceIntoTemp rule
+add string in the otherwise choice to act like size word
+word size because they are addresses
+
+13
+In coder.ssl
+remove RepeatStmt rule and RepeatStmt check within Statements rule
+repeat is no longer used in MiniT
+
+In coder.ssl, in WhileStmt rule
+modify WhileStmt rule to accept statements that appear before exit condition tWhileExitWhen
+MiniT loop statement is similar to old PT while except that statements can appear before exit condition
+
+14
+In coder.ssl, in the EmitCaseAlternativeAbort rule
+add check for tCaseOtherwise, which calls for CaseVariant if found, otherwise abort trap like before
+case alternative is added to case statement in MiniT
+
+Coder.pt
+1
+In coder.pt
+change the section of coder.def to most recent update of coder.def
+coder.def section in coder.pt must always be kept up to date with the newest coder.def
+
+2
+In coder.pt
+remove all references and alternative for tStringDescriptor and tSkipString
+these are replaced by tLiteralString in MiniT
+
+In coder.pt
+change Assert statements that refence tStringDescriptor to reference tLiteralString instead
+tStringDescriptor is replaced by tLiteralString in MiniT
+
+3
+In coder.pt, in GenerateCode section
+remove case for oOperandPushChar operation
+char is no longer used in MiniT
+
+In coder.pt, in GenerateCode section
+rename oOperandPushStringDescriptor to oOperandPushString
+to match the name change in coder.ssl
+
+4
+In coder.pt, in GenerateCode section
+remove call to AssertTempsAreFree in oEmitMergeSourceCoordinate operation
+with string trap introduced, it is not guaranteed that all temporaries will be free
+
+5
+In coder.pt, in oOperandFoldManifestSubscript section
+add subscript scaling by stringSize(1024) when operand length is string
+string subscripting takes scale by 1024 in MiniT
+
+In coder.pt
+add stringSize definition of 1024 along side wordSize
+stringSize need to be defined
+
+Changes to past section
+used the instructor's solutions for phase 1, phase2 and phase3
+turns out the problem we had in phase 3 was mainly caused by phase 1
