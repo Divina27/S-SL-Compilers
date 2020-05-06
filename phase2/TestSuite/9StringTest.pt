@@ -1,0 +1,10 @@
+external output
+
+var x : string
+var y : integer
+
+%this test handling of the new string type in minit and the operators that comes with it (substring and length)
+x := "Hi there" @ 1 .. 2 %should give the output stream given on sheet
+y := ? "length test" %length 11 string
+
+%since I haven't look at how the handling is done, I don't know if an error test case for the old car data type is needed or not
