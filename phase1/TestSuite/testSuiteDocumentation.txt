@@ -1,0 +1,66 @@
+Test1: inputTest
+purpose: 
+    test keyword external
+    test miniT comment format %
+expected input tokens: 
+    able to recognize '%' as lPercent
+expected output tokens: 
+    able to emit external as keyword pExternal
+    comments not to be emitted
+
+Test2: loopTest
+purpose: 
+    test keyword loop
+    test keyword exit
+    test keyword when
+    test keyword elsif
+    test syntax token plus plus "++"
+    test syntax token minus minus "--"
+expected output tokens:
+    able to emit loop as keyword pLoop
+    able to emit exit as keyword pExit
+    able to emit when as keyword pWhen
+    able to emit elsif as keyword pElsif
+    able to emit plus plus as syntax token pPlusPlus
+    able to emit minus minus as syntax token pMinusMinus
+
+Test3: minusequalsTest
+purpose:
+    test syntax token minus equals "-="
+expected output tokens:
+    able to emit minus equals as syntax token pMinusEquals
+    
+Test4: moduleAndPlusEqualsTest
+purpose:  
+    test keyword module
+    test syntax token plus equals "+="
+expected output tokens:
+    able to emit module as keyword pModule
+    able to emit plus equals as syntax token pPlusEquals
+
+Test5: oldAndNewStringTest
+purpose:
+    test the existing lQuote character class to refer to double quote
+    test the existing lQuote character class does not refer to single quote
+expected input tokens:
+    double quote should be treated as lQuote
+expected output tokens:
+    able to emit the string between double quotes as pLiteral
+expected error tokens:
+    unable to recognize single quote and emit an error token
+    
+Test6: otherTest
+purpose:
+    test input character class at sign and question mark
+    test old keywords should not be recognized
+    test old comment format should not be recognized
+expected input tokens:
+    able to recognize '@' as lAtSign 
+    able to recognize '?' as lQuestionMark
+expected output tokens:
+    able to emit at sign as syntax token pAtSign
+    able to emit question mark as syntax token pQuestionMark
+    old keywords(until, do, packed, program, begin, while, repeat) should not be recognized as keywords
+    old comment format({}, (**)) should not be recognized as comment
+expected error tokens:
+    old comment characters '{}' that are no longer recognized by scanner should be emitted as error tokens
