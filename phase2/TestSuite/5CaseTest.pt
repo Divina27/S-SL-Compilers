@@ -1,0 +1,13 @@
+external output
+
+const a := 3
+
+%the thing to test here is the newly added default case in minit, or the caseotherwise
+case a of
+  label 1:
+    put ("a = 1 (case 1)") putln
+  label 2:
+    put ("a = 2 (case 2)") putln
+  label :
+    put ("otherwise (caseotherwise)") putln
+end case
