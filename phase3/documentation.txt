@@ -1,0 +1,221 @@
+Semantic.ssl
+1
+In semantic.ssl, in input token section
+change to match the output semantic token of parser.ssl of phase2
+the two must match for the program to work
+
+2
+In semantic.ssl, in the output T-code section
+change handling of char to string as well as adding few new T-code to handle string
+old ones include tLiteralString, tFetchString, tAssignString, tStoreParmString, tSubscriptString
+new ones include tConcatenate, tSSubstring, tLength, tStringEquals
+MiniT uses string instead of char, string also have new function that needs to be handled
+
+In semantic.ssl, in out T-token section
+add tWhileExitWhen to handle loop exit and tCaseOtherwise for default alternative of case statement
+these operation are needed to handle the things changed in MiniT loop and case
+
+3
+In semantic.ssl, in PredeclaredIds section
+change pidChar to pidString
+MiniT uses string instead of char
+
+4
+In semantic.ssl, in type Interger section
+add size of string as 1024
+that is how large string size are
+
+5
+In semantic.ssl, in type StdType
+change stdChar to stdString
+MiniT uses string instead of char
+
+6
+In semantic.ssl, in mechanism SymbolTable
+add new oSymbolTblStripThenMergeScope
+this operation are used by module to handle public prodecure within it
+mainly regarding the fact public procedure can be called outside the module directly
+
+I decided to merge the two operation together to avoid declaring assert multiple time, (at least that is what I intended to do)
+
+7
+In semantic.ssl, in type SymbolKind
+add syModule and syPublicProcedure
+for the handling of module and public procedure in symbol table
+
+8
+In semantic.ssl, in type TypeKind
+change tpChar to tpString
+MiniT uses string instead of char
+
+9
+In semantic.ssl, in type TrapKind
+change trWriteChar to trWriteString and trReadChar to trReadString
+also change number of trWriteString to 109 and trReadString to 108
+MiniT uses string instead of char,and the numbering is just the trap number assigned by the instructor
+
+In semantic.ssl
+change naming of char to string in various places
+MiniT uses string instead of char
+
+10
+In semantic.ssl
+add rule ModuleDefinition basing off the existing ProcedureDefinition rule
+to support module newly added to MiniT
+
+In semantic.ssl, in the Block rule
+add recognition for module statement
+to link the newly added ModuleDefinition rule to module in the actual program
+
+11
+In semantic.ssl, in ConstantDefinitions rule
+remove multi-declaration support
+MiniT only allows one per definition for constant
+
+12
+In semantic.ssl, in TypeDefinitions rule
+remove multi-declaration support
+MiniT only allows one per definition for type
+
+13
+In semantic.ssl, in VariableDeclarations rule
+changed to support MiniT's multi-declaration method instead
+MiniT has different way of multi-declaration then PT
+
+14
+In semantic.ssl, in ProcedureDefinition rule
+added condition for sPublic, and set symbol type to syPublicProcedure if found
+to support public procedure added to MiniT
+
+15
+In semantic.ssl
+remove RepeatStmt, and modify WhileStmt to LoopStmt
+MiniT use loop instead of repeat and while
+this still output while loop T-code though 
+due to the similarity of PT while loop and MiniT loop and to save work for later phase
+
+In semantic.ssl, in the Statment rule
+remove handling for repeat and while and add handling for loop
+MiniT use loop instead of repeat and while
+
+16
+In semantic.ssl, in CaseStmt rule
+added sCaseOtherwise to look for sCaseOtherwise
+this is to support default alternative of the case statement added to MiniT
+
+17
+In semantic.ssl, in Expression rule
+added rule TernaryOperator to handle substring operations
+added statements to check input type for substring
+since substring is a new operation added to MiniT
+
+18
+In semantic.ssl, in Binaryoperator rule
+added handling of string concatenation to the sAdd part
+since string concatenation is a new operation added to MiniT
+
+19
+In semantic.ssl, in UnaryOperator rule
+added handling of string length operation
+added statement to check input type for length
+since string length is a new operation added to MiniT
+
+20
+In semantic.ssl, in output T-token section
+remove tSkipString and tStringDescriptor
+both are no longer needed due to string being first class values in MiniT
+
+In semantic.ssl, in Operand rule, in the sLiteral section
+change it to not emit tSkipString and tStringDescriptor
+due to string being first class values in MiniT
+
+In semantic.ssl, in ConstantDefintions rule, in the sLiteral section
+change it to not emit tSkipString and tStringDescriptor
+due to string being first class values in MiniT
+
+21
+In semantic.ssl, in ConstantDefintions rule, in the sLiteral section
+change handling of string to act like var being assigned the string then being set to read only
+because that is what we are told to do
+
+22
+In semantic.ssl, in UnaryOperator rule
+added handling for sIncrement and sDecrement
+increment and decrement are new operation added to MiniT
+
+23
+In semantic.ssl, in CompareRelationalOperandTypes rule
+remove handling for string within
+since string can't be compared by order while in PT char can be
+
+No change was made to CompareEqualityOperandTypes
+since string equality can still be compared
+
+24
+In semantic.ssl, in AssignProcedure rule
+change handling of tpArray and tpPackedArray which stands for array of char and string literal section to be tpString instead
+as well as change a bit within the choice rule to remove tpArray and tpPackedArray
+since in MiniT array of char is represented as string
+
+25
+In semantic.ssl, in various places
+change tpPackedArray to tpString in all places
+since tpPackedArray is just PT's way of representing string literal which is represented as tpString in MiniT
+
+In semantic.ssl, in various places
+change tpArray to tpString when it can only represent array of char
+array of char in MiniT is represented as tpString in MiniT
+
+Semantic.pt
+2
+In semantic.pt
+changed char to string in various places
+MiniT uses string instead of char
+
+3
+In semantic.pt, in "text" section
+changed {char} to {string} instead, as well as the handling within them to string instead of char
+MiniT uses string instead of char
+
+We also change {write} {writeln} {read} {readln} to {put} {putln} {get} {getln} in attempt to fix something during testing
+
+4
+In semantic.pt, in SslWalker section
+add oSymbolTblStripThenMergeScope case
+this is to handle the newly added operation in semantic.ssl
+main difference in oSymbolTblStripThenMergeScope and oSymbolTblPopScope 
+is the removal of popping of symbol table frame and type frame and removal of handling of parameter
+since oSymbolTblStripThenMergeScope is used to handle module which has no parameter and other visibility issue of module
+the merge scope decrement the lexical level even though strip scope doesn't do that so the decrement lexical level part stays
+
+5
+In semantic.pt, in "oAllocationVariable" section
+seperated tpString from tpBoolean and altered bytesize to stringSize(1024)
+added cases of tpArray to handle allocation of array of strings
+
+6
+In semantic.pt, for all assertions that ensure symbols on the top of the symbolstack are syProcedure
+added statement to accept syPublicProcedure on the top of the symbolstack
+MiniT added public procedure to procedure which must also be handled in the same assertion
+
+Changes to past section
+In stdIdentifier
+change the order of preidentifier token to match that of semantic phase
+to make put putln get getln readable by the program
+
+In parser.ssl, in Block section
+add ";" as null declaration
+prevent program from breaking when semi-colon appear in declaration
+
+In parser.ssl, in Block section and Statement section
+separate end procedure and end module from end statements
+prevent possible error cause by our previous design
+
+In parser.ssl, in Statements section
+change it to surround all statement with sBegin sEnd
+change it to match the output token given by the instructor
+it was causing error in semantic phase otherwise
+
+In parser.ssl, in CaseStmt section
+change it to enforce that default alternative can only be the last case statement
+this is to enforce a rule within MiniT
