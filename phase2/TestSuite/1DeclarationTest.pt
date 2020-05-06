@@ -1,0 +1,17 @@
+%program will be tested with any test case
+external output
+
+%testing all declaration type in minit (didn't include array or file)
+const a := 27
+const b := -24
+const c := a
+const d := "38"
+type e : integer
+type f : string
+var g : integer
+var h : string
+var i,j : integer
+var k,l : string
+
+%output token stream should be similar to the one given on the sheet
+%all these cases should be valid minit program, I decide to put all the error test case in a separate test
