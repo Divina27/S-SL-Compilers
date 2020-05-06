@@ -1,0 +1,16 @@
+external output
+
+var a : integer
+a := 1
+
+%this test is to test that the while and repeat loop no longer works, so none of these should function at all
+while a <= 2 do
+  put (a) putln
+  a++
+end while
+
+repeat
+  put (a) putln
+  a--
+  until a = 0
+end repeat
