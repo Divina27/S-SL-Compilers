@@ -1,0 +1,30 @@
+external output
+
+%test elsif and loop/exit/when and ++
+var x : integer
+x := 1
+
+loop
+    if x = 1 then
+        put ("if condition reached, x = 1") putln
+    elsif x = 2 then
+        put ("elsif condition reached, x = 2") putln
+    else
+        put ("else condition reached, x = 3") putln
+    end if
+    exit when x >= 3
+    x ++
+end loop
+
+%test -- as well
+loop
+    if x = 3 then
+        put ("if condition of minus minus, x = 3") putln
+    elsif x = 2 then
+        put ("elsif, x = 2") putln
+    else
+        put ("else, x = 1") putln
+    end if
+    exit when x <= 1
+    x --
+end loop
