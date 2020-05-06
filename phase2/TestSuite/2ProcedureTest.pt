@@ -1,0 +1,14 @@
+external output
+
+%here we test procedure, declaration within procedure, and statements within procedure
+procedure p
+  const a := 1
+  if a = 1 then
+    put (a) putln
+  end if
+end procedure
+
+%here we test public procedure
+procedure * q
+  put ("was here") putln
+end procedure
