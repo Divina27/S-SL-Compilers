@@ -1,0 +1,9 @@
+%test comment here
+%test external
+external output
+
+%old string (should fail)
+put ('test old string') putln
+%new string (should work)
+%also test put and putln
+put ("test new string") putln
