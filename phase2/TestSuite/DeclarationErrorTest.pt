@@ -1,0 +1,6 @@
+external output
+
+%here it test the old pascal declaration which should fail
+const a = 1; b = 2;
+type c = integer; d = char;
+var e : integer; f : char;
