@@ -1,0 +1,14 @@
+external output
+
+const a := 1
+const b := 2
+
+%well, given that all the statements need to be tested, I don't feel the need to have a test specifically for statement section itself
+%this uses case b of the options to implement elsif, which should make it into a nested if statement
+if a > b then
+  put ("a > b (if)") putln
+elsif a < b then
+  put ("a < b (elsif)") putln
+else
+  put ("a = b (else)") putln
+end if
