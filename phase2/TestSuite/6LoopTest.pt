@@ -1,0 +1,14 @@
+external output
+
+var a : integer
+a := 1
+
+%since there is already the increment decrement loop test, this really isn't necessary but oh well
+%test the loop statement, which replaces while and repeat statement in pascal
+loop
+  put (a) putln
+  a += 5
+  x := x mod 7
+  exit when x = 0
+  put ("exit loop") putln
+end loop
