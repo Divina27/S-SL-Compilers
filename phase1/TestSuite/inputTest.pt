@@ -1,0 +1,14 @@
+external input, output
+
+var testInput : integer
+var testInputLine : string
+
+%test get
+get (testInput)
+%output inputed integer
+put (testInput) putln
+
+%test getln
+getln (testInputLine)
+%output inputed string
+put (testInputLine) putln
