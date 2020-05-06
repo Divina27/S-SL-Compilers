@@ -1,0 +1,180 @@
+1. Token Definitions
+
+In parser.ssl, in the input keyword token section
+removed token pUntil, pDo, pPacked, pProgram, pBegin, pWhile, pRepeat
+since these are no longer output keyword token of MiniT scanner
+
+In parser.ssl, in the input keyword token section
+added token pExternal, pModule, pElsif, pLabel, pLoop, pExit, pWhen
+since these are new output keyword token of MiniT scanner
+
+In parser.ssl, in the input keyword token section
+changed the lastKeywordToken to pWhen
+since that is the new last keyword token of the list
+
+In parser.ssl, in the input non-compound token section
+added token pPlusEquals, pMinusEquals, pPlusPlus, pMinusMinus, pAtSign, pQuestionMark
+since these are new non-compound token of MiniT scanner
+
+In parser.ssl, in the input non-compound token section
+changed the lastSyntaxToken to pQuestionMark
+since that is the new last syntax token of the list
+
+In parser.ssl, in the output token section
+removed token sPacked, sWhileStmt, sRepeatStmt, sRepeatEnd
+since these semantic token are no longer needed in MiniT
+
+In parser.ssl, in the output token section
+added token sLoopStmt, sLoopExitWhen, sModule, sPublic, sCaseOtherwise, sSubstring, sLength, sIncrement, sDecrement
+since these semantic token are needed in MiniT
+
+In parser.ssl, in the output token section
+changed the lastSemanticToken to sDecrement
+since that is the new last semantic token of the list
+
+2. Programs
+
+In parser.ssl, in the block rule
+removed need of begin to start statements
+MiniT does not use begin to begin statements
+
+In parser.ssl
+change statement rule to statements
+as recommended in the tutorial to indicate that in MiniT can take multiple statements
+
+In parser.ssl, in the statements rule
+removed choice of begin to begin statement and have begin statement for all statement cases
+MiniT does not use begin to begin statements however we still want the parser to emit output token sBegin for each statements
+
+In parser.ssl, in the statements rule
+change it to a loop, exit when reach end or otherwise case
+to support multiple statements in minit
+
+3. Declarations
+
+In parser.ssl, in the constantdefinitions rule
+add requirement of ':=' and remove '=' in constantvalue
+declaration of constant in MiniT is ':=' instead of '='
+':=' is one input token so either we put ':=' requirement in constantdefinition or constantvalue
+
+In parser.ssl, in the constantdefinitions rule
+remove loop for multiple declaration
+MiniT only allows for one constant declaration at a time
+
+In parser.ssl, in the typedefinitions rule
+change '=' to ':'
+declaration of type in MiniT is ':' instead of '='
+
+In parser.ssl, in the typedefinitions rule
+remove loop for multiple declaration
+MiniT only allows for one type declaration at a time
+
+In parser.ssl, in the typebody rule
+remove packed case
+since sPacked is no longer outputed in MiniT, this case is removed
+
+In parser.ssl, in the variabledeclarations rule
+the loop is moved up and changed to take ',' and multiple declaration case
+MiniT does take cases like var a,b: integer instead of things like var a: integer; b: integer, this change is to accommodate that
+
+4. Procedures
+
+In parser.ssl in ProcedureHeading
+change ';' to ',' in type identifier section
+remove ';' after procedure end
+
+In parser.ssl in Block
+add a choice '*' to recognize public procedure
+
+In parser.ssl in Block
+remove ';' in the procedure choice after calling block
+
+5. Modules
+
+In parser.ssl, in the block rule
+add case 'module' which calls rule modules
+to make the program recognize modules that is added to MiniT
+
+In parser.ssl
+add rule modules
+this is to handle module cases
+
+In parser.ssl in Block 
+in choice module, emit sModule when recognizing a module
+call block to deal with declarations and statements
+
+6. Statements
+
+In parser.ssl, in the statements rule
+make if, case, and loop statements emit sBegin at the start and sEnd at the end
+this is to make the minit statement similar to that of the pascal program to the semantic phase
+although we don't know if we need to do that for assignment and call statements too so we didn't do that
+
+7. Elsif Clauses
+
+In parser.ssl, in the ifstmt rule
+add case elsif where it loop into another ifstmt rule
+elsif is essentially a nested if loop, this will simulate elsif function without emitting it to the semantic phase
+
+8. Case Statements
+
+In parser.ssl, in the casestmt rule
+add case 'label' which lead to a choice case between ':' or anything else
+in case of ':', it goes to rule caseotherwise
+this is default case alternative added to MiniT
+otherwise go to casealternative
+
+In parser.ssl
+add rule caseotherwise
+this is to handle the default case alternative in MiniT
+
+9. Loop Statements
+
+In parser.ssl, in statements rule
+add case loop which goes to rule loopstmt
+this is the new loop statement used in minit
+
+In parser.ssl, in statements rule
+removed case while and case repeat
+these loop type are no longer used in minit
+
+In parser.ssl
+added rule loopstmt and loopexitwhen
+to support the new loop statements
+
+In parser.ssl
+removed rule whilestmt and repeatstmt
+while and repeat are no longer in minit
+
+10. Short Form Assignments
+
+In parser.ssl, in assignmentorcallstmt rule
+add case '+=' and case '-='
+to support '+=' and '-=' that was newly added to minit
+
+11. Iterator Statements
+
+In parser.ssl in AssignmentOrCall
+add choices to recognize '++', '--'
+to support '++' and '--' that was newly added to minit
+
+12. The String Type
+
+In parser.ssl in Term
+add choice '@' to recognize substring operation
+to handle the new minit string operator substring
+
+In parser.ssl in Factor 
+add choice '?' to recognize length operation
+to handle the new minit string operator length
+
+13. Other Syntactic Details
+
+In parser.ssl
+';' is removed in several places
+';' no longer marks the end of a section within MiniT
+places where ';' was removed include the rule program, block, constantdefinitions, typedefinitions, variabledeclarations, procedureheading, beginstmt, casestmt...
+
+In parser.ssl, in statements rule
+change the null statement to be outputed when ';' is encountered
+';' is a null statements in minit and does nothing, also we don't know if we need to surround this with sBegin and sEnd either since it is in statements
