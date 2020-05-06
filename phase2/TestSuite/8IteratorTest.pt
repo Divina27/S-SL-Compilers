@@ -1,0 +1,12 @@
+external output
+
+var a : integer
+a := 1
+
+%testing iterator ++ and -- that is added to minit
+a++
+a--
+a++
+put (a) putln %should be 2 here
+
+%we are just expecting the correct output token stream here, the actual increment and decrement will be done in semantic phase
