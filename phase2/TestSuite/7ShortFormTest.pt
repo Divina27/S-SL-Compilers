@@ -1,0 +1,21 @@
+external output
+
+var a,b : integer
+a := 1
+b := 11
+
+%I don't know if string concatenation is required to be tested too
+%this test the short form += and -= that is added to minit
+a += 3
+a -= 5
+a += 7
+a -= 9
+put (a) putln %should be -3 here
+
+%testing short form with declared variable which might not work
+%does minit short form take identifier on the right hand side?
+a += b
+b += 2
+a -= b
+
+put (a) putln %should be -5 here
