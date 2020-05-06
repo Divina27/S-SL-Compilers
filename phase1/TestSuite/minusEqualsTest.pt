@@ -1,0 +1,10 @@
+external output
+
+var x : integer
+x := 0
+
+%test -=
+x -= 7
+if x = -7 then
+    put ("-= works") putln
+end if
