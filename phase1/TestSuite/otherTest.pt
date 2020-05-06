@@ -1,0 +1,6 @@
+  
+%putting these here because I don't know what they are used for, should be fine for phase 1
+@ ?
+
+%might as well put the keywords that should no longer work here as well
+until do packed program begin while repeat {} (**)
