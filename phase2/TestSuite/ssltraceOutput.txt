@@ -1,0 +1,519 @@
+1. DeclarationTest.pt
+
+% value emitted 44
+ .sProgram
+ % value emitted 44
+ % value emitted 44
+ % value emitted 44
+ .sIdentifier
+ .sParmEnd
+  .sConst
+   .sIdentifier
+    % value emitted 44
+    .sInteger
+  .sConst
+   .sIdentifier
+     % value emitted 44
+     .sInteger
+    .sNegate
+  .sConst
+   .sIdentifier
+    % value emitted 44
+    .sIdentifier
+  .sConst
+   .sIdentifier
+    % value emitted 44
+    .sLiteral
+  .sType
+   .sIdentifier
+     % value emitted 44
+     .sIdentifier
+  .sType
+   .sIdentifier
+     % value emitted 44
+     .sIdentifier
+  .sVar
+   .sIdentifier
+     % value emitted 44
+     .sIdentifier
+  .sVar
+   .sIdentifier
+     % value emitted 44
+     .sIdentifier
+  .sVar
+   .sIdentifier
+   .sVar
+   .sIdentifier
+     % value emitted 44
+     .sIdentifier
+  .sVar
+   .sIdentifier
+   .sVar
+   .sIdentifier
+     % value emitted 44
+     % value emitted 44
+     % value emitted 44
+     % value emitted 44
+     % value emitted 44
+     .sIdentifier
+
+
+-----------------------------------------------------------------------------------
+
+
+2. ProcedureTest.pt
+
+.sProgram
+ % value emitted 44
+ % value emitted 44
+ % value emitted 44
+ .sIdentifier
+ .sParmEnd
+  .sProcedure
+  % value emitted 44
+  .sIdentifier
+   .sParmEnd
+   .sConst
+    .sIdentifier
+     % value emitted 44
+     .sInteger
+    .sBegin
+     .sIfStmt
+         .sIdentifier
+         .sInteger
+      .sEq
+     .sExpnEnd
+     % value emitted 44
+     .sThen
+        .sCallStmt
+        .sIdentifier
+            .sIdentifier
+        .sExpnEnd
+        % value emitted 44
+        .sParmEnd
+      % value emitted 44
+      .sEnd
+    % value emitted 44
+    % value emitted 44
+    % value emitted 44
+  .sProcedure
+  % value emitted 44
+  .sIdentifier
+  .sPublic
+   .sParmEnd
+      .sCallStmt
+      .sIdentifier
+          .sLiteral
+      .sExpnEnd
+      % value emitted 44
+      .sParmEnd
+    % value emitted 44
+    % value emitted 44
+    % value emitted 44
+
+
+----------------------------------------------------------------------------------
+
+
+3. ModuleTest.pt
+
+ % value emitted 44
+ .sProgram
+ % value emitted 44
+ % value emitted 44
+ % value emitted 44
+ .sIdentifier
+ .sParmEnd
+  .sModule
+   % value emitted 44
+   .sIdentifier
+    .sConst
+     .sIdentifier
+      % value emitted 44
+      .sInteger
+     .sBegin
+      .sIfStmt
+          .sIdentifier
+          .sInteger
+       .sGE
+      .sExpnEnd
+      % value emitted 44
+      .sThen
+         .sCallStmt
+         .sIdentifier
+             .sIdentifier
+         .sExpnEnd
+         % value emitted 44
+         .sParmEnd
+       % value emitted 44
+       .sEnd
+     % value emitted 44
+     % value emitted 44
+     % value emitted 44
+     % value emitted 44
+
+
+----------------------------------------------------------------------------------
+
+
+4. ElsifTest.pt
+
+.sProgram
+ % value emitted 44
+ % value emitted 44
+ .sIdentifier
+ .sParmEnd
+  .sConst
+   .sIdentifier
+    % value emitted 44
+    .sInteger
+  .sConst
+   .sIdentifier
+    % value emitted 44
+    % value emitted 44
+    % value emitted 44
+    % value emitted 44
+    % value emitted 44
+    .sInteger
+   .sBegin
+    .sIfStmt
+        .sIdentifier
+        .sIdentifier
+     .sGT
+    .sExpnEnd
+    % value emitted 44
+    .sThen
+       .sCallStmt
+       .sIdentifier
+           .sLiteral
+       .sExpnEnd
+       % value emitted 44
+       .sParmEnd
+    .sElse
+    .sBegin
+     .sIfStmt
+         .sIdentifier
+         .sIdentifier
+      .sLT
+     .sExpnEnd
+     % value emitted 44
+     .sThen
+        .sCallStmt
+        .sIdentifier
+            .sLiteral
+        .sExpnEnd
+        % value emitted 44
+        .sParmEnd
+     % value emitted 44
+     .sElse
+        .sCallStmt
+        .sIdentifier
+            .sLiteral
+        .sExpnEnd
+        % value emitted 44
+        .sParmEnd
+      % value emitted 44
+      % value emitted 44
+      .sEnd
+    .sEnd
+
+
+----------------------------------------------------------------------------------
+
+
+5. CaseTest.pt
+
+ .sProgram
+ % value emitted 44
+ % value emitted 44
+ .sIdentifier
+ .sParmEnd
+  .sConst
+   .sIdentifier
+    % value emitted 44
+    % value emitted 44
+    % value emitted 44
+    .sInteger
+   .sBegin
+    .sCaseStmt
+        .sIdentifier
+    .sExpnEnd
+    % value emitted 44
+       .sInteger
+     .sLabelEnd
+     % value emitted 44
+        .sCallStmt
+        .sIdentifier
+            .sLiteral
+        .sExpnEnd
+        % value emitted 44
+        .sParmEnd
+       .sInteger
+     .sLabelEnd
+     % value emitted 44
+        .sCallStmt
+        .sIdentifier
+            .sLiteral
+        .sExpnEnd
+        % value emitted 44
+        .sParmEnd
+    % value emitted 44
+     .sCaseOtherwise
+        .sCallStmt
+        .sIdentifier
+            .sLiteral
+        .sExpnEnd
+        % value emitted 44
+        .sParmEnd
+      % value emitted 44
+      % value emitted 44
+    .sCaseEnd
+    .sEnd
+    
+  
+----------------------------------------------------------------------------------
+
+
+6. LoopTest.pt
+
+.sProgram
+ % value emitted 44
+ % value emitted 44
+ .sIdentifier
+ .sParmEnd
+  .sVar
+   .sIdentifier
+     % value emitted 44
+     .sIdentifier
+    .sAssignmentStmt
+    .sIdentifier
+        % value emitted 44
+        % value emitted 44
+        % value emitted 44
+        % value emitted 44
+        .sInteger
+    .sExpnEnd
+   % value emitted 44
+   .sBegin
+    .sLoopStmt
+       .sCallStmt
+       .sIdentifier
+           .sIdentifier
+       .sExpnEnd
+       % value emitted 44
+       .sParmEnd
+      .sAssignmentStmt
+      .sIdentifier
+      .sIdentifier
+          % value emitted 44
+          .sInteger
+      .sAdd
+      .sExpnEnd
+      .sAssignmentStmt
+      .sIdentifier
+          .sIdentifier
+          % value emitted 44
+          .sInteger
+         .sModulus
+      .sExpnEnd
+     .sLoopExitWhen
+         .sIdentifier
+         % value emitted 44
+         .sInteger
+      .sEq
+     .sExpnEnd
+        .sCallStmt
+        .sIdentifier
+            .sLiteral
+        .sExpnEnd
+        % value emitted 44
+        .sParmEnd
+      % value emitted 44
+      % value emitted 44
+      .sEnd
+
+
+----------------------------------------------------------------------------------
+
+
+7. ShortFormTest.pt
+
+.sProgram
+ % value emitted 44
+ % value emitted 44
+ .sIdentifier
+ .sParmEnd
+  .sVar
+   .sIdentifier
+   .sVar
+   .sIdentifier
+     % value emitted 44
+     .sIdentifier
+    .sAssignmentStmt
+    .sIdentifier
+        % value emitted 44
+        .sInteger
+    .sExpnEnd
+    .sAssignmentStmt
+    .sIdentifier
+        % value emitted 44
+        % value emitted 44
+        % value emitted 44
+        % value emitted 44
+        .sInteger
+    .sExpnEnd
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+        % value emitted 44
+        .sInteger
+    .sAdd
+    .sExpnEnd
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+        % value emitted 44
+        .sInteger
+    .sSubtract
+    .sExpnEnd
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+        % value emitted 44
+        .sInteger
+    .sAdd
+    .sExpnEnd
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+        % value emitted 44
+        .sInteger
+    .sSubtract
+    .sExpnEnd
+     .sCallStmt
+     .sIdentifier
+         .sIdentifier
+     .sExpnEnd
+     % value emitted 44
+     % value emitted 44
+     % value emitted 44
+     % value emitted 44
+     .sParmEnd
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+        % value emitted 44
+        .sIdentifier
+    .sAdd
+    .sExpnEnd
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+        % value emitted 44
+        .sInteger
+    .sAdd
+    .sExpnEnd
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+        % value emitted 44
+        % value emitted 44
+        % value emitted 44
+        % value emitted 44
+        .sIdentifier
+    .sSubtract
+    .sExpnEnd
+
+
+----------------------------------------------------------------------------------
+
+
+8. IteratorTest.pt
+
+.sProgram
+ % value emitted 44
+ % value emitted 44
+ .sIdentifier
+ .sParmEnd
+  .sVar
+   .sIdentifier
+     % value emitted 44
+     .sIdentifier
+    .sAssignmentStmt
+    .sIdentifier
+        % value emitted 44
+        % value emitted 44
+        % value emitted 44
+        .sInteger
+    .sExpnEnd
+    % value emitted 44
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+    .sIncrement
+    .sExpnEnd
+    % value emitted 44
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+    .sDecrement
+    .sExpnEnd
+    % value emitted 44
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+    .sIncrement
+    .sExpnEnd
+     .sCallStmt
+     .sIdentifier
+         .sIdentifier
+     .sExpnEnd
+     .sParmEnd
+   % value emitted 44
+   % value emitted 44
+   % value emitted 44
+   % value emitted 44
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+
+
+----------------------------------------------------------------------------------
+
+
+9. StringTest.pt
+
+ .sProgram
+ % value emitted 44
+ % value emitted 44
+ .sIdentifier
+ .sParmEnd
+  .sVar
+   .sIdentifier
+     % value emitted 44
+     .sIdentifier
+  .sVar
+   .sIdentifier
+     % value emitted 44
+     % value emitted 44
+     % value emitted 44
+     .sIdentifier
+    .sAssignmentStmt
+    .sIdentifier
+        .sLiteral
+       .sInteger
+       % value emitted 44
+       .sInteger
+       .sSubstring
+    .sExpnEnd
+    .sAssignmentStmt
+    .sIdentifier
+        % value emitted 44
+        % value emitted 44
+        % value emitted 44
+        % value emitted 44
+        .sLiteral
+        .sLength
+    .sExpnEnd
+    
+    
