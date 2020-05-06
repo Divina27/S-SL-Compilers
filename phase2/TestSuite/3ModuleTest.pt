@@ -1,0 +1,12 @@
+%module don't use program parameter apparently, so external shouldn't be needed here
+external output
+
+%here we test module, declaration within module, and statements within module
+module m
+  const a := 1
+  if a >= 1 then
+    put (a) putln
+  end if
+end module
+
+%no public module here
